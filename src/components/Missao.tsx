@@ -3,7 +3,7 @@ export default function Missao({ dict }: { dict: any }) {
     <section className="missao" id="missao">
       <div className="container">
         <div className="missao-inner">
-          <div>
+          <div className="animate">
             <div className="section-label">{dict.missao.label}</div>
             <h2 className="section-title">
               {dict.missao.titleNormal}
@@ -16,7 +16,7 @@ export default function Missao({ dict }: { dict: any }) {
               <cite>{dict.missao.quoteCite}</cite>
             </div>
           </div>
-          <div className="missao-visual">
+          <div className="missao-visual animate delay-2">
             <div className="missao-card">
               <div className="missao-card-icon">{dict.missao.card1Icon}</div>
               <h4>{dict.missao.card1Title}</h4>
