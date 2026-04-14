@@ -1,8 +1,5 @@
 {
-  "nav": {
-    "logo": "Amparo",
-    "cta": "Quero ajudar"
-  },
+  "nav": { "logo": "Amparo", "cta": "Quero ajudar" },
   "hero": {
     "eyebrow": "Movimento de acolhimento",
     "title1": "Nenhuma mulher",
@@ -22,69 +19,145 @@
     "eyebrow": "A realidade",
     "titleNormal": "Uma crise silenciosa que o Brasil",
     "titleEm": "ainda não enfrenta",
-    "body": "Por trás dos números, existem rostos. Mulheres, adolescentes e meninas que chegam ao momento mais difícil de suas vidas sem encontrar acolhimento. O debate existe — mas a rede de apoio, não.",
-    "card1Num": "87.545",
-    "card1Text": "vítimas de estupro registradas no Brasil em 2024 — o maior número da história. Uma pessoa a cada 6 minutos.",
-    "card2Num": "61%",
-    "card2Text": "das vítimas são crianças e adolescentes com menos de 14 anos — meninas que precisam de proteção, não de silêncio.",
-    "card3Num": "11.607",
-    "card3Text": "partos por ano são resultado de violência sexual contra meninas menores de 14 anos. Crianças gerando crianças.",
-    "card4Num": "200 mil",
-    "card4Text": "internações por ano no SUS relacionadas a complicações de aborto — muitas por falta de apoio e alternativas.",
-    "card5Num": "~2 mil",
-    "card5Text": "abortos legais realizados por ano no país — um número irrisório diante de 19 mil meninas menores de 14 anos que se tornam mães anualmente.",
-    "card6Num": "56%",
-    "card6Text": "das mulheres que passam por uma perda gestacional desenvolvem depressão. A ausência de acolhimento agrava o sofrimento.",
-    "source": "Fontes: Anuário Brasileiro de Segurança Pública 2025, DataSUS, UNICEF, IPEA, Agência Brasil"
+    "body": "Por trás de cada número existe um rosto. Uma mulher, uma adolescente, uma menina — que chegou ao momento mais difícil da sua vida sem encontrar ninguém para estender a mão. O debate existe. A rede de apoio, não.",
+    "cards": [
+      {
+        "num": "87.545",
+        "text": "vítimas de estupro registradas no Brasil em 2024 — o maior número da série histórica. Uma pessoa estuprada a cada 6 minutos. Segundo o IPEA, apenas 8,5% dos casos são denunciados — o número real pode chegar a 822 mil estupros por ano."
+      },
+      {
+        "num": "61%",
+        "text": "das vítimas são crianças e adolescentes com menos de 14 anos. 87,3% das vítimas são do sexo feminino. 52,8% são identificadas como negras. 67% são violentadas dentro da própria casa, e 59% pelo próprio pai, padrasto ou familiar."
+      },
+      {
+        "num": "164.199",
+        "text": "casos de violência sexual contra crianças e adolescentes registrados entre 2021 e 2023, segundo relatório do UNICEF. Em 2023, era um estupro de crianças a cada 8 minutos. E os números seguem crescendo."
+      },
+      {
+        "num": "31.749",
+        "text": "filhos nascidos de mães com idade entre 10 e 14 anos apenas no biênio 2021–2022, segundo o DataSUS. A cada ano, mais de 11.600 partos são resultado direto de violência sexual contra meninas. Crianças gerando crianças."
+      },
+      {
+        "num": "19 mil",
+        "text": "meninas menores de 14 anos se tornam mães a cada ano no Brasil. 40% dessas meninas só começaram o pré-natal após 3 meses de gestação. Para meninas indígenas do Norte, esse número chega a 49%."
+      },
+      {
+        "num": "7,4 milhões",
+        "text": "de brasileiras já fizeram pelo menos um aborto ao longo da vida, segundo estudo citado pela Câmara dos Deputados. Uma em cada cinco mulheres acima de 40 anos já passou por essa experiência."
+      },
+      {
+        "num": "200 mil",
+        "text": "internações por ano no SUS relacionadas a aborto. 95% são curetagens pós-abortamento. Enquanto isso, apenas cerca de 2.687 abortos legais foram realizados em 2023 — um aumento de 71% em 5 anos, acompanhando a escalada de estupros."
+      },
+      {
+        "num": "4ª causa",
+        "text": "de morte materna no Brasil: o aborto inseguro. Entre 2006 e 2015, foram registrados 770 óbitos com causa básica aborto no país. Em 2024, o Brasil registrou 1.492 feminicídios — 4 mulheres assassinadas por dia."
+      },
+      {
+        "num": "11 milhões",
+        "text": "de mães solo no Brasil, muitas em extrema vulnerabilidade. Com a pandemia, 8,5 milhões de mulheres saíram do mercado de trabalho. Invisibilizadas pelas políticas públicas, muitas sobrevivem com doações."
+      }
+    ],
+    "source": "Fontes: Anuário Brasileiro de Segurança Pública 2025 · DataSUS/SIH-SUS · UNICEF/FBSP · IPEA · Agência Brasil · IBGE · Câmara dos Deputados"
+  },
+  "impacto": {
+    "eyebrow": "O impacto invisível",
+    "titleNormal": "As feridas que",
+    "titleEm": "ninguém vê",
+    "body": "Quando uma mulher enfrenta uma gestação em crise sem apoio, as consequências vão muito além do momento. A ciência mostra que a ausência de acolhimento deixa marcas profundas — e que a presença de cuidado muda tudo.",
+    "stats": [
+      {
+        "value": "81%",
+        "label": "maior risco de problemas de saúde mental em mulheres que passam por um aborto sem suporte, segundo revisão de 22 estudos publicada no British Journal of Psychiatry (2011)"
+      },
+      {
+        "value": "56%",
+        "label": "das mulheres que buscam atendimento hospitalar por abortamento apresentam sinais de depressão. 119 de 120 mulheres pesquisadas tinham autoestima de nível médio ou baixo"
+      },
+      {
+        "value": "115%",
+        "label": "mais risco de tentativa de suicídio. Além de 34% mais ansiedade, 37% mais depressão, 110% mais risco de alcoolismo e 250% mais chance de hospitalização psiquiátrica"
+      },
+      {
+        "value": "16%",
+        "label": "mantêm sintomas de estresse pós-traumático 9 meses depois. 17% continuam com ansiedade e 5% com depressão. Pesadelos, flashbacks e angústia podem durar anos"
+      }
+    ],
+    "violenceTitle": "A violência que ninguém conta",
+    "violenceText": "Mulheres em situação de abortamento são internadas em unidades conjuntas com puérperas e seus recém-nascidos. Profissionais de saúde que julgam ao invés de acolher. Existe um 'luto não autorizado' — a sociedade e até os profissionais de saúde não reconhecem o luto associado ao aborto, o que intensifica o sofrimento e impede a recuperação.",
+    "closingTitle": "Mas existe um fator que muda tudo:",
+    "closingText": "A literatura científica é clara: o que mais agrava o sofrimento não é a situação em si — é a ausência de acolhimento. Estigma social, julgamento, coerção, silêncio forçado, falta de suporte profissional. Quando a mulher encontra escuta qualificada, apoio emocional e alternativas reais, os desfechos são radicalmente diferentes. O acolhimento humanizado é o fator protetor mais poderoso que existe.",
+    "sourceText": "Fontes: British Journal of Psychiatry (2011) · Revista JRG de Estudos Acadêmicos (2024) · Tese Dra. Mariana Gondim Mariutti · Revista FT (2025)"
+  },
+  "lacuna": {
+    "eyebrow": "A lacuna",
+    "titleNormal": "A rede de apoio que o Brasil",
+    "titleEm": "nunca construiu",
+    "body": "Em outros países, mulheres em gestação de crise encontram apoio estruturado: centros de acolhimento, voluntários treinados, recursos práticos. No Brasil, essa rede praticamente não existe.",
+    "compareUsTitle": "Estados Unidos",
+    "compareUsNum": "2.500+",
+    "compareUsText": "centros de apoio à gestante em crise (Crisis Pregnancy Centers), com décadas de experiência, milhares de voluntários e infraestrutura consolidada. A Heartbeat International investiu US$12 milhões em uma década para expandir essa rede.",
+    "compareBrTitle": "Brasil",
+    "compareBrNum": "<20",
+    "compareBrText": "centros em todo o país — para mais de 200 milhões de habitantes. A Brazil 4 Life, após mais de 20 anos de trabalho, conseguiu implantar apenas 18 clínicas. A CERVI em São Paulo atende 100 mulheres por mês e já acolheu mais de 17 mil em 20 anos — mas é uma gota no oceano.",
+    "quote": "Quando cheguei aos Estados Unidos em 1993, encontrei 3 mil centros de apoio a mães em situação de crise. Aquilo me encantou — porque no Brasil não tinha isso.",
+    "quoteAuthor": "Iná Sobolewski, fundadora da Brazil 4 Life",
+    "initiativesTitle": "Heróis lutando sozinhos",
+    "initiativesText": "Existem iniciativas corajosas espalhadas pelo Brasil: a Casa da Gestante em Campinas (capacidade para apenas 20 pessoas), a Casa Pró-Vida Mãe Imaculada em Curitiba, a Associação Guadalupe em São José dos Campos, a Associação Oásis da Imaculada em BH, a Casa Luz no Ceará, o Centro de Referência de Defesa da Vida em Brasília. A Rede Nacional em Defesa da Vida, liderada pela cantora Zezé Luz, já ajudou a salvar mais de 700 bebês com trabalho de voluntários.",
+    "susTitle": "O que o SUS oferece — e o que falta",
+    "susText": "O SUS oferece pré-natal através das Unidades Básicas de Saúde. Mas para a mulher que não tem onde morar, que foi vítima de violência, que é uma adolescente sem família — não existe protocolo nacional de acolhimento emocional e social. A demanda cresce, os profissionais não dão conta com os poucos recursos, e a dimensão humana da gestação é frequentemente negligenciada. Recentemente, Salvador apresentou um Projeto de Lei para criar um Programa Municipal de Apoio às Gestantes em Crise, e o SUS regulamentou a atuação de doulas — sinais de que o país começa a despertar para essa necessidade."
   },
   "missao": {
     "eyebrow": "Nossa missão",
     "titleNormal": "A religião pura é",
     "titleEm": "cuidar dos que sofrem",
-    "body": "O Amparo nasce da convicção de que fé sem obras é vazia. Queremos construir no Brasil uma rede real de acolhimento — com centros físicos, voluntários preparados, recursos práticos e presença humana onde ela mais importa.",
+    "body": "O Amparo nasce da convicção de que fé sem obras é vazia. Queremos construir no Brasil a rede que nunca existiu — com centros físicos, voluntários preparados, recursos práticos e presença humana onde ela mais importa.",
     "quoteText": "A religião pura e imaculada diante de Deus Pai é esta: visitar os órfãos e as viúvas nas suas tribulações.",
     "quoteCite": "Tiago 1:27",
-    "card1Icon": "🫂",
-    "card1Title": "Acolhimento sem julgamento",
-    "card1Text": "Apoio psicológico e espiritual para mulheres em momento de crise — com escuta qualificada, respeito e presença humana.",
-    "card2Icon": "🗺️",
-    "card2Title": "Mapa nacional de recursos",
-    "card2Text": "Conectando centros de apoio, voluntários, médicos e assistência jurídica em todo o país, para que nenhuma mulher fique sem saber onde buscar ajuda.",
-    "card3Icon": "🌱",
-    "card3Title": "Esperança concreta",
-    "card3Text": "Alternativas reais: adoção legal, moradia temporária, famílias de acolhimento, capacitação profissional e geração de renda."
+    "cards": [
+      { "icon": "🫂", "title": "Acolhimento sem julgamento", "text": "Apoio psicológico e espiritual para mulheres em momento de crise — com escuta qualificada, respeito e presença humana. Porque quando a mulher é cuidada, ela aprende a cuidar." },
+      { "icon": "🗺️", "title": "Mapa nacional de recursos", "text": "Uma plataforma que conecta centros de apoio, voluntários, médicos, advogados e assistência social em todo o país — para que nenhuma mulher fique sem saber onde buscar ajuda." },
+      { "icon": "🌱", "title": "Esperança concreta", "text": "Alternativas reais: adoção legal, moradia temporária, famílias de acolhimento, capacitação profissional e geração de renda. Não apenas palavras — caminhos." },
+      { "icon": "🏠", "title": "Centros de acolhimento", "text": "Espaços físicos onde a gestante encontra segurança, cuidado de saúde, orientação jurídica e suporte emocional — como já existe em mais de 2.500 locais nos EUA." },
+      { "icon": "👩‍⚕️", "title": "Formação de voluntários", "text": "Capacitação de psicólogos, advogados, médicos, educadores e qualquer pessoa de coração disposto — para acolher com competência, sensibilidade e amor." },
+      { "icon": "💻", "title": "Tecnologia a serviço da vida", "text": "Uma plataforma digital que conecta quem precisa de ajuda a quem pode ajudar, de forma rápida, segura e humana — quebrando barreiras geográficas." }
+    ]
   },
   "ajudar": {
     "eyebrow": "Como participar",
     "titleNormal": "Há um lugar pra você",
     "titleEm": "nesse movimento",
-    "body": "Nos EUA, existem mais de 2.500 centros de apoio à gestante em crise. No Brasil, não chegam a 20. Precisamos mudar isso — e precisamos de você.",
-    "card1Num": "01",
-    "card1Title": "Voluntariar",
-    "card1Text": "Psicólogos, advogados, médicos, educadores, assistentes sociais — sua habilidade pode mudar a história de alguém. Uma escuta qualificada no momento certo salva vidas.",
-    "card1Link": "Quero ser voluntário →",
-    "card2Num": "02",
-    "card2Title": "Investir no projeto",
-    "card2Text": "A infraestrutura dessa rede precisa de tecnologia, comunicação, treinamento de equipes e expansão nacional. Cada real investido é uma vida alcançada.",
-    "card2Link": "Quero investir →",
-    "card3Num": "03",
-    "card3Title": "Abrir um centro",
-    "card3Text": "Tem uma igreja, espaço ou organização? Ajude a abrir um ponto de acolhimento na sua cidade com apoio da nossa rede.",
-    "card3Link": "Quero abrir um centro →"
+    "body": "Essa rede não se constrói com uma pessoa. Se constrói com um movimento. E dentro desse movimento, existe um espaço exatamente do seu tamanho.",
+    "cards": [
+      {
+        "num": "01",
+        "title": "Voluntariar",
+        "text": "Psicólogos, advogados, médicos, educadores, assistentes sociais — sua habilidade pode mudar a história de alguém. Uma escuta qualificada no momento certo salva vidas. A CERVI em SP já atendeu mais de 17 mil mulheres com voluntários como você.",
+        "link": "Quero ser voluntário →"
+      },
+      {
+        "num": "02",
+        "title": "Investir no projeto",
+        "text": "A infraestrutura dessa rede precisa de tecnologia, comunicação, treinamento e expansão nacional. Nos EUA, a Heartbeat International investiu US$12 milhões em uma década para construir sua rede. No Brasil, estamos começando do zero.",
+        "link": "Quero investir →"
+      },
+      {
+        "num": "03",
+        "title": "Abrir um centro",
+        "text": "Tem uma igreja, espaço ou organização? Ajude a abrir um ponto de acolhimento na sua cidade. A Brazil 4 Life começou com 1 centro em Perdizes/SP em 2000. Hoje são 18 — mas o Brasil tem mais de 5.500 municípios que precisam.",
+        "link": "Quero abrir um centro →"
+      }
+    ]
   },
   "form": {
     "eyebrow": "Cadastro",
     "titleNormal": "Entre para a lista",
     "titleEm": "de fundadores",
     "body": "Estamos reunindo as primeiras pessoas que vão construir essa rede junto com a gente. Deixa seu contato e vamos conversar.",
-    "fieldName": "Nome completo",
-    "placeName": "Seu nome",
-    "fieldEmail": "E-mail",
-    "placeEmail": "seu@email.com",
-    "fieldWhatsapp": "WhatsApp",
-    "placeWhatsapp": "(00) 00000-0000",
-    "fieldCity": "Cidade / Estado",
-    "placeCity": "Ex: Curitiba, PR",
+    "fieldName": "Nome completo", "placeName": "Seu nome",
+    "fieldEmail": "E-mail", "placeEmail": "seu@email.com",
+    "fieldWhatsapp": "WhatsApp", "placeWhatsapp": "(00) 00000-0000",
+    "fieldCity": "Cidade / Estado", "placeCity": "Ex: Curitiba, PR",
     "fieldRole": "Como você quer ajudar?",
     "roleDefault": "Selecione uma opção",
     "role1": "Voluntário (psicólogo, médico, advogado...)",
@@ -100,8 +173,5 @@
     "successTitle": "Obrigado por se juntar a nós!",
     "successText": "Recebemos seu cadastro. Em breve entraremos em contato para conversar sobre como você pode fazer parte desse movimento."
   },
-  "footer": {
-    "slogan": "Cada vida merece acolhimento.",
-    "copy": "© 2025 Amparo Brasil — Projeto em desenvolvimento"
-  }
+  "footer": { "slogan": "Cada vida merece acolhimento.", "copy": "© 2025 Amparo Brasil — Projeto em desenvolvimento" }
 }

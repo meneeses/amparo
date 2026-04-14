@@ -497,34 +497,23 @@ nav.scrolled {
   background: var(--linen);
 }
 
-.missao-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--sp-lg);
-  margin-top: var(--sp-lg);
-}
-
-@media (min-width: 768px) {
-  .missao-grid { grid-template-columns: 1fr 1fr; align-items: start; }
-}
-
-.missao-text .quote {
-  margin-top: var(--sp-md);
+.missao-quote {
+  margin: var(--sp-lg) 0;
   padding: 1.5rem;
   background: rgba(107, 143, 113, 0.06);
   border-left: 3px solid var(--sage);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
-.missao-text .quote p {
+.missao-quote p {
   font-family: 'Lora', Georgia, serif;
   font-style: italic;
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.7;
 }
 
-.missao-text .quote cite {
+.missao-quote cite {
   display: block;
   font-style: normal;
   font-size: 0.85rem;
@@ -533,10 +522,18 @@ nav.scrolled {
   margin-top: 0.5rem;
 }
 
-.missao-cards {
-  display: flex;
-  flex-direction: column;
+.missao-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .missao-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .missao-cards-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .missao-card {
@@ -559,7 +556,7 @@ nav.scrolled {
 }
 
 .missao-card h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 0.4rem;
   color: var(--text-primary);
@@ -568,7 +565,179 @@ nav.scrolled {
 .missao-card p {
   font-size: 0.9rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
+}
+
+/* ---------- IMPACTO (Mental Health) ---------- */
+.impacto {
+  background: var(--rose-50);
+  position: relative;
+}
+
+.impacto .section-eyebrow { color: var(--rose); }
+.impacto .section-eyebrow::before { background: var(--rose); }
+.impacto .section-title em { color: var(--rose); }
+
+.impacto-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: var(--sp-lg);
+}
+
+@media (min-width: 640px) {
+  .impacto-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.impacto-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--rose-100);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.impacto-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(196, 131, 122, 0.12);
+}
+
+.impacto-card-value {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--rose);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.impacto-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.impacto-closing {
+  margin-top: var(--sp-xl);
+  padding: var(--sp-md);
+  background: #fff;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--sage-200);
+}
+
+.impacto-closing h3 {
+  font-size: 1.25rem;
+  color: var(--sage);
+  margin-bottom: 0.75rem;
+}
+
+.impacto-closing p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.impacto-source {
+  margin-top: var(--sp-md);
+  font-size: 0.75rem;
+  color: var(--warm-gray);
+}
+
+/* ---------- LACUNA (Support Gap) ---------- */
+.lacuna {
+  background: var(--cream);
+}
+
+.lacuna-compare {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: var(--sp-lg);
+}
+
+@media (min-width: 640px) {
+  .lacuna-compare { grid-template-columns: 1fr 1fr; }
+}
+
+.lacuna-compare-card {
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--sand);
+}
+
+.lacuna-compare-us {
+  background: var(--sage-50);
+  border-color: var(--sage-200);
+}
+
+.lacuna-compare-br {
+  background: var(--rose-50);
+  border-color: var(--rose-100);
+}
+
+.lacuna-compare-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.lacuna-compare-num {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.lacuna-compare-us .lacuna-compare-num { color: var(--sage); }
+.lacuna-compare-br .lacuna-compare-num { color: var(--rose); }
+
+.lacuna-compare-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.lacuna-quote {
+  margin: var(--sp-xl) 0 var(--sp-lg);
+  padding: var(--sp-md);
+  background: var(--linen);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.lacuna-quote p {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.lacuna-quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--sage);
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.lacuna-initiatives {
+  margin-bottom: var(--sp-md);
+}
+
+.lacuna-initiatives p,
+.lacuna-closing p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
 }
 
 /* ---------- COMO AJUDAR ---------- */

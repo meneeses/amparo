@@ -4,6 +4,8 @@ import type { Locale } from '../../i18n-config'
 import Header from '../../components/Header'
 import Hero from '../../components/Hero'
 import Dados from '../../components/Dados'
+import Impacto from '../../components/Impacto'
+import Lacuna from '../../components/Lacuna'
 import Missao from '../../components/Missao'
 import ComoAjudar from '../../components/ComoAjudar'
 import ContactForm from '../../components/ContactForm'
@@ -26,6 +28,8 @@ export default async function Page({
       <main id="main-content">
         <Hero dict={dict} />
         <Dados dict={dict} />
+        <Impacto dict={dict} />
+        <Lacuna dict={dict} />
         <Missao dict={dict} />
         <ComoAjudar dict={dict} />
         <ContactForm dict={dict} />

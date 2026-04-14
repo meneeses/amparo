@@ -1,97 +1,97 @@
 {
-  "nav": {
-    "logo": "Amparo",
-    "cta": "I want to help"
-  },
+  "nav": { "logo": "Amparo", "cta": "I want to help" },
   "hero": {
     "eyebrow": "A movement of care",
-    "title1": "No woman",
-    "title2": "should face this",
-    "titleEm": "alone.",
+    "title1": "No woman", "title2": "should face this", "titleEm": "alone.",
     "subtitle": "Amparo is a movement that connects women in vulnerable situations to support centers, volunteers, resources, and hope — across Brazil.",
-    "ctaPrimary": "I want to join",
-    "ctaSecondary": "Meet the project",
-    "stat1Value": "87K",
-    "stat1Label": "victims of sexual violence per year in Brazil",
-    "stat2Value": "Zero",
-    "stat2Label": "structured national support networks",
-    "stat3Value": "Today",
-    "stat3Label": "is the day to change this story"
+    "ctaPrimary": "I want to join", "ctaSecondary": "Meet the project",
+    "stat1Value": "87K", "stat1Label": "victims of sexual violence per year in Brazil",
+    "stat2Value": "Zero", "stat2Label": "structured national support networks",
+    "stat3Value": "Today", "stat3Label": "is the day to change this story"
   },
   "dados": {
     "eyebrow": "The reality",
-    "titleNormal": "A silent crisis that Brazil",
-    "titleEm": "has yet to face",
-    "body": "Behind the numbers, there are faces. Women, teenagers, and girls who reach the most difficult moment of their lives without finding care. The debate exists — but the support network doesn't.",
-    "card1Num": "87,545",
-    "card1Text": "registered rape victims in Brazil in 2024 — the highest number ever recorded. One person every 6 minutes.",
-    "card2Num": "61%",
-    "card2Text": "of victims are children and adolescents under 14 — girls who need protection, not silence.",
-    "card3Num": "11,607",
-    "card3Text": "births per year are the result of sexual violence against girls under 14. Children bearing children.",
-    "card4Num": "200K",
-    "card4Text": "hospitalizations per year in public health related to abortion complications — many due to lack of support and alternatives.",
-    "card5Num": "~2,000",
-    "card5Text": "legal abortions performed per year in Brazil — a negligible number compared to 19,000 girls under 14 who become mothers annually.",
-    "card6Num": "56%",
-    "card6Text": "of women who experience pregnancy loss develop depression. The absence of care deepens the suffering.",
-    "source": "Sources: Brazilian Public Safety Yearbook 2025, DataSUS, UNICEF, IPEA, Agência Brasil"
+    "titleNormal": "A silent crisis that Brazil", "titleEm": "has yet to face",
+    "body": "Behind every number is a face. A woman, a teenager, a girl — who reached the most difficult moment of her life without finding anyone to help. The debate exists. The support network doesn't.",
+    "cards": [
+      { "num": "87,545", "text": "registered rape victims in Brazil in 2024 — the highest number ever. One person raped every 6 minutes. According to IPEA, only 8.5% of cases are reported — the real number may reach 822,000 per year." },
+      { "num": "61%", "text": "of victims are children and teens under 14. 87.3% of victims are female. 52.8% are identified as Black. 67% are assaulted inside their own homes, and 59% by their own father, stepfather, or relative." },
+      { "num": "164,199", "text": "cases of sexual violence against children and adolescents registered between 2021 and 2023, according to a UNICEF report. In 2023, one child was raped every 8 minutes. And the numbers keep growing." },
+      { "num": "31,749", "text": "children born to mothers aged 10 to 14 in the 2021–2022 biennium alone, according to DataSUS. Each year, over 11,600 births result directly from sexual violence against girls. Children bearing children." },
+      { "num": "19K", "text": "girls under 14 become mothers each year in Brazil. 40% of these girls only started prenatal care after 3 months of pregnancy. For indigenous girls in the North, that number reaches 49%." },
+      { "num": "7.4 million", "text": "Brazilian women have had at least one abortion in their lifetime, according to a study cited by the Chamber of Deputies. One in five women over 40 has been through this experience." },
+      { "num": "200K", "text": "hospitalizations per year in the public health system related to abortion. 95% are post-abortion curettages. Meanwhile, only about 2,687 legal abortions were performed in 2023 — a 71% increase in 5 years, following the rise in rapes." },
+      { "num": "4th cause", "text": "of maternal death in Brazil: unsafe abortion. Between 2006 and 2015, 770 deaths with abortion as the primary cause were recorded. In 2024, Brazil registered 1,492 femicides — 4 women murdered per day." },
+      { "num": "11 million", "text": "single mothers in Brazil, many in extreme vulnerability. During the pandemic, 8.5 million women left the workforce. Invisible to public policy, many survive on donations." }
+    ],
+    "source": "Sources: Brazilian Public Safety Yearbook 2025 · DataSUS · UNICEF/FBSP · IPEA · Agência Brasil · IBGE · Chamber of Deputies"
+  },
+  "impacto": {
+    "eyebrow": "The invisible impact",
+    "titleNormal": "The wounds that", "titleEm": "no one sees",
+    "body": "When a woman faces a crisis pregnancy without support, the consequences extend far beyond the moment. Science shows that the absence of care leaves deep scars — and that the presence of care changes everything.",
+    "stats": [
+      { "value": "81%", "label": "higher risk of mental health problems in women who undergo abortion without support, according to a review of 22 studies published in the British Journal of Psychiatry (2011)" },
+      { "value": "56%", "label": "of women who seek hospital care for abortion show signs of depression. 119 out of 120 women surveyed had low or medium self-esteem" },
+      { "value": "115%", "label": "higher risk of suicide attempt. Plus 34% more anxiety, 37% more depression, 110% more alcoholism risk, and 250% more chance of psychiatric hospitalization" },
+      { "value": "16%", "label": "maintain PTSD symptoms 9 months later. 17% continue with anxiety and 5% with depression. Nightmares, flashbacks, and anguish can last for years" }
+    ],
+    "violenceTitle": "The violence no one talks about",
+    "violenceText": "Women experiencing miscarriage are hospitalized alongside new mothers and their newborns. Health professionals judge instead of welcoming. There is an 'unauthorized grief' — society and even healthcare workers don't recognize the mourning associated with abortion, which intensifies suffering and prevents recovery.",
+    "closingTitle": "But there is one factor that changes everything:",
+    "closingText": "The scientific literature is clear: what worsens suffering the most is not the situation itself — it's the absence of care. Social stigma, judgment, coercion, forced silence, lack of professional support. When a woman finds qualified listening, emotional support, and real alternatives, outcomes are radically different. Humanized care is the most powerful protective factor there is.",
+    "sourceText": "Sources: British Journal of Psychiatry (2011) · JRG Academic Studies Journal (2024) · Dr. Mariana Gondim Mariutti thesis · Revista FT (2025)"
+  },
+  "lacuna": {
+    "eyebrow": "The gap",
+    "titleNormal": "The support network that Brazil", "titleEm": "never built",
+    "body": "In other countries, women in crisis pregnancies find structured support: welcome centers, trained volunteers, practical resources. In Brazil, this network practically doesn't exist.",
+    "compareUsTitle": "United States", "compareUsNum": "2,500+",
+    "compareUsText": "crisis pregnancy support centers, with decades of experience, thousands of volunteers, and consolidated infrastructure. Heartbeat International invested $12 million in a decade to expand this network.",
+    "compareBrTitle": "Brazil", "compareBrNum": "<20",
+    "compareBrText": "centers in the entire country — for over 200 million people. Brazil 4 Life, after 20+ years, managed to establish only 18 clinics. CERVI in São Paulo serves 100 women per month and has helped over 17,000 in 20 years — but it's a drop in the ocean.",
+    "quote": "When I arrived in the United States in 1993, I found 3,000 support centers for mothers in crisis. That fascinated me — because in Brazil there was nothing like it.",
+    "quoteAuthor": "Iná Sobolewski, founder of Brazil 4 Life",
+    "initiativesTitle": "Heroes fighting alone",
+    "initiativesText": "There are courageous initiatives across Brazil: Casa da Gestante in Campinas (capacity for only 20 people), Casa Pró-Vida Mãe Imaculada in Curitiba, Associação Guadalupe in São José dos Campos, Oásis da Imaculada in BH, Casa Luz in Ceará, the Center for the Defense of Life in Brasília. The National Network for the Defense of Life, led by singer Zezé Luz, has helped save over 700 babies through volunteer work.",
+    "susTitle": "What the public system offers — and what's missing",
+    "susText": "The public health system offers prenatal care through basic health units. But for a woman with nowhere to live, a violence victim, a teenager without family — there is no national protocol for emotional and social support. Demand grows, professionals can't keep up with scarce resources, and the human dimension of pregnancy is frequently neglected. Recently, Salvador introduced a bill to create a Municipal Program for Supporting Pregnant Women in Crisis, and the public system regulated the role of doulas — signs that the country is beginning to awaken to this need."
   },
   "missao": {
     "eyebrow": "Our mission",
-    "titleNormal": "Pure religion is",
-    "titleEm": "to care for the suffering",
-    "body": "Amparo is born from the conviction that faith without works is empty. We want to build a real support network in Brazil — with physical centers, prepared volunteers, practical resources, and human presence where it matters most.",
+    "titleNormal": "Pure religion is", "titleEm": "to care for the suffering",
+    "body": "Amparo is born from the conviction that faith without works is empty. We want to build in Brazil the network that never existed — with physical centers, prepared volunteers, practical resources, and human presence where it matters most.",
     "quoteText": "Religion that is pure and undefiled before God the Father is this: to visit orphans and widows in their affliction.",
     "quoteCite": "James 1:27",
-    "card1Icon": "🫂",
-    "card1Title": "Support without judgment",
-    "card1Text": "Psychological and spiritual support for women in moments of crisis — with qualified listening, respect, and human presence.",
-    "card2Icon": "🗺️",
-    "card2Title": "National resource map",
-    "card2Text": "Connecting support centers, volunteers, doctors, and legal assistance nationwide, so no woman is left without knowing where to find help.",
-    "card3Icon": "🌱",
-    "card3Title": "Concrete hope",
-    "card3Text": "Real alternatives: legal adoption, temporary housing, host families, professional training, and income generation."
+    "cards": [
+      { "icon": "🫂", "title": "Support without judgment", "text": "Psychological and spiritual support for women in crisis — with qualified listening, respect, and human presence. Because when a woman is cared for, she learns to care." },
+      { "icon": "🗺️", "title": "National resource map", "text": "A platform connecting support centers, volunteers, doctors, lawyers, and social services nationwide — so no woman is left without knowing where to find help." },
+      { "icon": "🌱", "title": "Concrete hope", "text": "Real alternatives: legal adoption, temporary housing, host families, professional training, and income generation. Not just words — pathways." },
+      { "icon": "🏠", "title": "Support centers", "text": "Physical spaces where the pregnant woman finds safety, healthcare, legal guidance, and emotional support — like the 2,500+ centers that already exist in the US." },
+      { "icon": "👩‍⚕️", "title": "Volunteer training", "text": "Training psychologists, lawyers, doctors, educators, and anyone willing — to welcome with competence, sensitivity, and love." },
+      { "icon": "💻", "title": "Technology for life", "text": "A digital platform connecting those who need help to those who can help, quickly, safely, and humanely — breaking geographic barriers." }
+    ]
   },
   "ajudar": {
     "eyebrow": "How to participate",
-    "titleNormal": "There is a place for you",
-    "titleEm": "in this movement",
-    "body": "In the US, there are over 2,500 crisis pregnancy support centers. In Brazil, fewer than 20. We need to change this — and we need you.",
-    "card1Num": "01",
-    "card1Title": "Volunteer",
-    "card1Text": "Psychologists, lawyers, doctors, educators, social workers — your skill can change someone's story. Qualified listening at the right moment saves lives.",
-    "card1Link": "I want to volunteer →",
-    "card2Num": "02",
-    "card2Title": "Invest in the project",
-    "card2Text": "This network's infrastructure needs technology, communication, team training, and national expansion. Every investment reaches a life.",
-    "card2Link": "I want to invest →",
-    "card3Num": "03",
-    "card3Title": "Open a center",
-    "card3Text": "Have a church, space, or organization? Help open a support point in your city with our network's backing.",
-    "card3Link": "I want to open a center →"
+    "titleNormal": "There is a place for you", "titleEm": "in this movement",
+    "body": "This network is not built by one person. It's built by a movement. And within this movement, there's a space exactly your size.",
+    "cards": [
+      { "num": "01", "title": "Volunteer", "text": "Psychologists, lawyers, doctors, educators, social workers — your skill can change someone's story. Qualified listening at the right moment saves lives. CERVI in SP has served over 17,000 women with volunteers like you.", "link": "I want to volunteer →" },
+      { "num": "02", "title": "Invest in the project", "text": "This network needs technology, communication, training, and national expansion. In the US, Heartbeat International invested $12M in a decade. In Brazil, we're starting from zero.", "link": "I want to invest →" },
+      { "num": "03", "title": "Open a center", "text": "Have a church, space, or organization? Help open a support point in your city. Brazil 4 Life started with 1 center in Perdizes/SP in 2000. Now they have 18 — but Brazil has 5,500+ municipalities in need.", "link": "I want to open a center →" }
+    ]
   },
   "form": {
-    "eyebrow": "Sign up",
-    "titleNormal": "Join the list",
-    "titleEm": "of founders",
+    "eyebrow": "Sign up", "titleNormal": "Join the list", "titleEm": "of founders",
     "body": "We are gathering the first people who will build this network with us. Leave your contact and let's talk.",
-    "fieldName": "Full name",
-    "placeName": "Your name",
-    "fieldEmail": "E-mail",
-    "placeEmail": "you@email.com",
-    "fieldWhatsapp": "WhatsApp",
-    "placeWhatsapp": "+55 (00) 00000-0000",
-    "fieldCity": "City / State",
-    "placeCity": "Ex: Curitiba, PR",
-    "fieldRole": "How do you want to help?",
-    "roleDefault": "Select an option",
-    "role1": "Volunteer (psychologist, doctor, lawyer...)",
-    "role2": "Investor / financial supporter",
-    "role3": "Open a support center",
-    "role4": "Promote and support the movement",
-    "role5": "Others",
+    "fieldName": "Full name", "placeName": "Your name",
+    "fieldEmail": "E-mail", "placeEmail": "you@email.com",
+    "fieldWhatsapp": "WhatsApp", "placeWhatsapp": "+55 (00) 00000-0000",
+    "fieldCity": "City / State", "placeCity": "Ex: Curitiba, PR",
+    "fieldRole": "How do you want to help?", "roleDefault": "Select an option",
+    "role1": "Volunteer (psychologist, doctor, lawyer...)", "role2": "Investor / financial supporter",
+    "role3": "Open a support center", "role4": "Promote and support the movement", "role5": "Others",
     "fieldMessage": "Tell us a bit about yourself (optional)",
     "placeMessage": "What motivated you to get interested in this project?",
     "submitBtn": "I want to be part of Amparo",
@@ -100,8 +100,5 @@
     "successTitle": "Thank you for joining us!",
     "successText": "We have received your sign up. We will contact you soon to discuss how you can be part of this movement."
   },
-  "footer": {
-    "slogan": "Every life deserves care.",
-    "copy": "© 2025 Amparo Brazil — Project under development"
-  }
+  "footer": { "slogan": "Every life deserves care.", "copy": "© 2025 Amparo Brazil — Project under development" }
 }
