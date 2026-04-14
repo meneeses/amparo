@@ -1,37 +1,36 @@
 import Link from 'next/link'
 
-export default function ComoAjudar({ dict }: { dict: any }) {
+export default function ComoAjudar({ dict }: { dict: Record<string, any> }) {
+  const { ajudar } = dict
+
+  const cards = [
+    { num: ajudar.card1Num, title: ajudar.card1Title, text: ajudar.card1Text, link: ajudar.card1Link },
+    { num: ajudar.card2Num, title: ajudar.card2Title, text: ajudar.card2Text, link: ajudar.card2Link },
+    { num: ajudar.card3Num, title: ajudar.card3Title, text: ajudar.card3Text, link: ajudar.card3Link },
+  ]
+
   return (
-    <section className="ajudar" id="ajudar">
-      <div className="container text-center">
-        <div className="section-label">{dict.ajudar.label}</div>
-        <h2 className="section-title">
-          {dict.ajudar.titleNormal}
-          <br />
-          <em>{dict.ajudar.titleEm}</em>
+    <section className="ajudar" id="ajudar" aria-labelledby="ajudar-title">
+      <div className="container">
+        <p className="section-eyebrow">{ajudar.eyebrow}</p>
+        <h2 id="ajudar-title" className="section-title">
+          {ajudar.titleNormal} <em>{ajudar.titleEm}</em>
         </h2>
-        <p className="section-body mb-0" style={{ margin: '0 auto' }}>
-          {dict.ajudar.body}
-        </p>
-        <div className="ajudar-grid">
-          <Link href="#cadastro" className="ajudar-card">
-            <div className="ajudar-icon orange">🙌</div>
-            <h3>{dict.ajudar.card1Title}</h3>
-            <p>{dict.ajudar.card1Text}</p>
-            <span className="card-link">{dict.ajudar.card1Link}</span>
-          </Link>
-          <Link href="#cadastro" className="ajudar-card">
-            <div className="ajudar-icon blue">💼</div>
-            <h3>{dict.ajudar.card2Title}</h3>
-            <p>{dict.ajudar.card2Text}</p>
-            <span className="card-link">{dict.ajudar.card2Link}</span>
-          </Link>
-          <Link href="#cadastro" className="ajudar-card">
-            <div className="ajudar-icon green">🏠</div>
-            <h3>{dict.ajudar.card3Title}</h3>
-            <p>{dict.ajudar.card3Text}</p>
-            <span className="card-link">{dict.ajudar.card3Link}</span>
-          </Link>
+        <p className="section-body">{ajudar.body}</p>
+
+        <div className="ajudar-grid" role="list">
+          {cards.map((card) => (
+            <article className="ajudar-card" key={card.num} role="listitem">
+              <div className="ajudar-card-number" aria-hidden="true">
+                {card.num}
+              </div>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+              <Link href="#cadastro" className="ajudar-card-link">
+                {card.link}
+              </Link>
+            </article>
+          ))}
         </div>
       </div>
     </section>

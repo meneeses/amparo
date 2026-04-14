@@ -1,9 +1,13 @@
-export default function Footer({ dict }: { dict: any }) {
+export default function Footer({ dict }: { dict: Record<string, any> }) {
+  const { footer } = dict
+
   return (
-    <footer>
-      <span className="footer-logo">{dict.nav.logo}</span>
-      <p>{dict.footer.slogan}</p>
-      <p style={{ marginTop: '1.5rem' }}>{dict.footer.copy}</p>
+    <footer role="contentinfo">
+      <div className="container">
+        <div className="footer-logo" aria-hidden="true">Amparo.</div>
+        <p className="footer-slogan">{footer.slogan}</p>
+        <p>{footer.copy}</p>
+      </div>
     </footer>
   )
 }

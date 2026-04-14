@@ -1,39 +1,43 @@
 import Link from 'next/link'
 
-export default function Hero({ dict }: { dict: any }) {
+export default function Hero({ dict }: { dict: Record<string, any> }) {
+  const { hero } = dict
+
   return (
-    <section className="hero">
-      <div className="hero-inner">
-        <div className="hero-eyebrow animate">{dict.hero.eyebrow}</div>
-        <h1 className="animate delay-1">
-          {dict.hero.titleNormal1}
+    <section className="hero" aria-labelledby="hero-title">
+      <div className="container hero-content">
+        <p className="section-eyebrow animate">{hero.eyebrow}</p>
+
+        <h1 id="hero-title" className="animate delay-1">
+          {hero.title1}
           <br />
-          {dict.hero.titleNormal2}
+          {hero.title2}
           <br />
-          <em>{dict.hero.titleEm}</em>
+          <em>{hero.titleEm}</em>
         </h1>
-        <p className="hero-sub animate delay-2">{dict.hero.subtitle}</p>
+
+        <p className="hero-sub animate delay-2">{hero.subtitle}</p>
+
         <div className="hero-actions animate delay-3">
           <Link href="#cadastro" className="btn-primary">
-            {dict.hero.ctaPrimary}
+            {hero.ctaPrimary}
           </Link>
           <Link href="#missao" className="btn-secondary">
-            {dict.hero.ctaSecondary}
+            {hero.ctaSecondary}
           </Link>
         </div>
-        <div className="hero-stat-row animate delay-4">
-          <div className="hero-stat">
-            <strong>{dict.hero.stat1Value}</strong>
-            <span>{dict.hero.stat1Label}</span>
-          </div>
-          <div className="hero-stat">
-            <strong>{dict.hero.stat2Value}</strong>
-            <span>{dict.hero.stat2Label}</span>
-          </div>
-          <div className="hero-stat">
-            <strong>{dict.hero.stat3Value}</strong>
-            <span>{dict.hero.stat3Label}</span>
-          </div>
+
+        <div className="hero-stats animate delay-4" role="list" aria-label="Estatísticas">
+          {[
+            { value: hero.stat1Value, label: hero.stat1Label },
+            { value: hero.stat2Value, label: hero.stat2Label },
+            { value: hero.stat3Value, label: hero.stat3Label },
+          ].map((stat) => (
+            <div className="hero-stat" key={stat.label} role="listitem">
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

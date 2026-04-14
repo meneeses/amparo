@@ -1,37 +1,39 @@
-export default function Missao({ dict }: { dict: any }) {
+export default function Missao({ dict }: { dict: Record<string, any> }) {
+  const { missao } = dict
+
+  const cards = [
+    { icon: missao.card1Icon, title: missao.card1Title, text: missao.card1Text },
+    { icon: missao.card2Icon, title: missao.card2Title, text: missao.card2Text },
+    { icon: missao.card3Icon, title: missao.card3Title, text: missao.card3Text },
+  ]
+
   return (
-    <section className="missao" id="missao">
+    <section className="missao" id="missao" aria-labelledby="missao-title">
       <div className="container">
-        <div className="missao-inner">
-          <div className="animate">
-            <div className="section-label">{dict.missao.label}</div>
-            <h2 className="section-title">
-              {dict.missao.titleNormal}
-              <br />
-              <em>{dict.missao.titleEm}</em>
-            </h2>
-            <p className="section-body">{dict.missao.body}</p>
-            <div className="missao-quote">
-              <blockquote>{dict.missao.quoteText}</blockquote>
-              <cite>{dict.missao.quoteCite}</cite>
-            </div>
+        <p className="section-eyebrow">{missao.eyebrow}</p>
+        <h2 id="missao-title" className="section-title">
+          {missao.titleNormal} <em>{missao.titleEm}</em>
+        </h2>
+
+        <div className="missao-grid">
+          <div className="missao-text">
+            <p className="section-body">{missao.body}</p>
+            <blockquote className="quote">
+              <p>{missao.quoteText}</p>
+              <cite>{missao.quoteCite}</cite>
+            </blockquote>
           </div>
-          <div className="missao-visual animate delay-2">
-            <div className="missao-card">
-              <div className="missao-card-icon">{dict.missao.card1Icon}</div>
-              <h4>{dict.missao.card1Title}</h4>
-              <p>{dict.missao.card1Text}</p>
-            </div>
-            <div className="missao-card">
-              <div className="missao-card-icon">{dict.missao.card2Icon}</div>
-              <h4>{dict.missao.card2Title}</h4>
-              <p>{dict.missao.card2Text}</p>
-            </div>
-            <div className="missao-card">
-              <div className="missao-card-icon">{dict.missao.card3Icon}</div>
-              <h4>{dict.missao.card3Title}</h4>
-              <p>{dict.missao.card3Text}</p>
-            </div>
+
+          <div className="missao-cards" role="list">
+            {cards.map((card) => (
+              <article className="missao-card" key={card.title} role="listitem">
+                <div className="missao-card-icon" aria-hidden="true">
+                  {card.icon}
+                </div>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </div>
