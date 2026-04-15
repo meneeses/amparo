@@ -29,7 +29,11 @@ const INITIAL: FormFields = {
   mensagem: '',
 }
 
-/* ── Validation helpers ── */
+/* ── Formspree ── */
+// 👉 TROCAR pelo seu Form ID do https://formspree.io
+const FORMSPREE_URL = 'https://formspree.io/f/SEU_FORM_ID_AQUI'
+
+/* ── Validation ── */
 const EMAIL_RE =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 
@@ -57,6 +61,7 @@ export default function ContactForm({ dict }: { dict: Record<string, any> }) {
   const [errors, setErrors] = useState<FieldErrors>({})
   const [success, setSuccess] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
   const lastSubmit = useRef(0)
   const [honey, setHoney] = useState('')
 
@@ -73,6 +78,7 @@ export default function ContactForm({ dict }: { dict: Record<string, any> }) {
           delete next[field]
           return next
         })
+        setSubmitError(false)
       },
     []
   )
@@ -92,33 +98,53 @@ export default function ContactForm({ dict }: { dict: Record<string, any> }) {
 
   const handleSubmit = async (ev: FormEvent) => {
     ev.preventDefault()
+
+    /* Honeypot — bots preenchem este campo invisível */
     if (honey) return
+
+    /* Rate limit client-side */
     const now = Date.now()
     if (now - lastSubmit.current < COOLDOWN) return
     lastSubmit.current = now
+
     if (!validate()) return
 
     setSubmitting(true)
-    const payload: FormFields = {
+    setSubmitError(false)
+
+    /* Sanitizar todos os campos antes do envio */
+    const payload = {
       nome: sanitize(data.nome),
       email: sanitize(data.email).toLowerCase(),
-      whatsapp: data.whatsapp.replace(/\D/g, ''),
+      whatsapp: data.whatsapp,
       cidade: sanitize(data.cidade),
-      tipo: sanitize(data.tipo),
+      como_ajudar: sanitize(data.tipo),
       mensagem: sanitize(data.mensagem),
+      /* Formspree usa _subject para o assunto do email */
+      _subject: `Novo cadastro Amparo: ${sanitize(data.nome)}`,
     }
 
     try {
-      // TODO: Replace with API call — server must re-validate, check CSRF, rate-limit by IP
-      void payload
-      await new Promise((r) => setTimeout(r, 800))
-      setSuccess(true)
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      })
+
+      if (res.ok) {
+        setSuccess(true)
+      } else {
+        setSubmitError(true)
+        setSubmitting(false)
+      }
     } catch {
+      setSubmitError(true)
       setSubmitting(false)
     }
   }
 
-  const field = (
+  /* ── Helper: campo input reutilizável ── */
+  const renderField = (
     id: keyof FormFields,
     label: string,
     type: string,
@@ -140,7 +166,9 @@ export default function ContactForm({ dict }: { dict: Record<string, any> }) {
         aria-invalid={!!errors[id] || undefined}
         aria-describedby={errors[id] ? `err-${id}` : undefined}
       />
-      {errors[id] && <span id={`err-${id}`} className="form-error" role="alert">{errors[id]}</span>}
+      {errors[id] && (
+        <span id={`err-${id}`} className="form-error" role="alert">{errors[id]}</span>
+      )}
     </div>
   )
 
@@ -160,21 +188,28 @@ export default function ContactForm({ dict }: { dict: Record<string, any> }) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate autoComplete="on">
-              {/* Honeypot anti-spam */}
+              {/* Honeypot anti-spam — invisível para humanos */}
               <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }}>
                 <label htmlFor="website">Website</label>
-                <input id="website" name="website" type="text" tabIndex={-1} value={honey} onChange={(e) => setHoney(e.target.value)} autoComplete="off" />
+                <input id="website" name="_gotcha" type="text" tabIndex={-1} value={honey} onChange={(e) => setHoney(e.target.value)} autoComplete="off" />
               </div>
 
               <div className="form-grid">
-                {field('nome', form.fieldName, 'text', form.placeName, { required: true, autoComplete: 'name' })}
-                {field('email', form.fieldEmail, 'email', form.placeEmail, { required: true, autoComplete: 'email' })}
-                {field('whatsapp', form.fieldWhatsapp, 'tel', form.placeWhatsapp, { autoComplete: 'tel', inputMode: 'numeric' })}
-                {field('cidade', form.fieldCity, 'text', form.placeCity, { autoComplete: 'address-level2' })}
+                {renderField('nome', form.fieldName, 'text', form.placeName, { required: true, autoComplete: 'name' })}
+                {renderField('email', form.fieldEmail, 'email', form.placeEmail, { required: true, autoComplete: 'email' })}
+                {renderField('whatsapp', form.fieldWhatsapp, 'tel', form.placeWhatsapp, { autoComplete: 'tel', inputMode: 'numeric' })}
+                {renderField('cidade', form.fieldCity, 'text', form.placeCity, { autoComplete: 'address-level2' })}
 
                 <div className={`form-group full${errors.tipo ? ' error' : ''}`}>
                   <label htmlFor="tipo">{form.fieldRole} *</label>
-                  <select id="tipo" value={data.tipo} onChange={updateField('tipo')} aria-required="true" aria-invalid={!!errors.tipo || undefined} aria-describedby={errors.tipo ? 'err-tipo' : undefined}>
+                  <select
+                    id="tipo"
+                    value={data.tipo}
+                    onChange={updateField('tipo')}
+                    aria-required="true"
+                    aria-invalid={!!errors.tipo || undefined}
+                    aria-describedby={errors.tipo ? 'err-tipo' : undefined}
+                  >
                     <option value="">{form.roleDefault}</option>
                     <option value="voluntario">{form.role1}</option>
                     <option value="investidor">{form.role2}</option>
@@ -187,12 +222,25 @@ export default function ContactForm({ dict }: { dict: Record<string, any> }) {
 
                 <div className="form-group full">
                   <label htmlFor="mensagem">{form.fieldMessage}</label>
-                  <textarea id="mensagem" placeholder={form.placeMessage} value={data.mensagem} onChange={updateField('mensagem')} maxLength={MAX.mensagem} rows={4} />
+                  <textarea
+                    id="mensagem"
+                    placeholder={form.placeMessage}
+                    value={data.mensagem}
+                    onChange={updateField('mensagem')}
+                    maxLength={MAX.mensagem}
+                    rows={4}
+                  />
                 </div>
               </div>
 
+              {submitError && (
+                <p className="form-error" role="alert" style={{ textAlign: 'center', marginTop: '0.75rem' }}>
+                  Erro ao enviar. Tente novamente em alguns instantes.
+                </p>
+              )}
+
               <button type="submit" className="form-submit" disabled={submitting} aria-busy={submitting}>
-                {submitting ? '...' : form.submitBtn}
+                {submitting ? 'Enviando...' : form.submitBtn}
               </button>
               <p className="form-note">{form.note}</p>
             </form>
