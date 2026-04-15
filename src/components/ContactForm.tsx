@@ -11,6 +11,7 @@ interface FormFields {
   mensagem: string
 }
 
+
 type FieldErrors = Partial<Record<keyof FormFields, string>>
 
 const INITIAL: FormFields = { nome: '', email: '', whatsapp: '', cidade: '', tipo: '', mensagem: '' }
