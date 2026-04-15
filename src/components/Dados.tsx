@@ -1,6 +1,16 @@
 export default function Dados({ dict }: { dict: Record<string, any> }) {
   const { dados } = dict
 
+  const cards: { num: string; text: string }[] =
+    dados.cards ?? [
+      { num: dados.card1Num, text: dados.card1Text },
+      { num: dados.card2Num, text: dados.card2Text },
+      { num: dados.card3Num, text: dados.card3Text },
+      { num: dados.card4Num, text: dados.card4Text },
+      { num: dados.card5Num, text: dados.card5Text },
+      { num: dados.card6Num, text: dados.card6Text },
+    ].filter((c) => c.num)
+
   return (
     <section className="dados" id="dados" aria-labelledby="dados-title">
       <div className="container">
@@ -11,8 +21,8 @@ export default function Dados({ dict }: { dict: Record<string, any> }) {
         <p className="section-body">{dados.body}</p>
 
         <div className="dados-grid" role="list" aria-label="Dados estatísticos">
-          {dados.cards.map((card: { num: string; text: string }) => (
-            <article className="dados-card" key={card.num} role="listitem">
+          {cards.map((card, index) => (
+            <article className="dados-card" key={`dados-${index}`} role="listitem">
               <div className="dados-card-num" aria-hidden="true">{card.num}</div>
               <p>{card.text}</p>
             </article>

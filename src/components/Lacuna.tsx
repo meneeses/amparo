@@ -28,15 +28,19 @@ export default function Lacuna({ dict }: { dict: Record<string, any> }) {
           <cite>— {lacuna.quoteAuthor}</cite>
         </blockquote>
 
-        <div className="lacuna-initiatives">
-          <h3>{lacuna.initiativesTitle}</h3>
-          <p>{lacuna.initiativesText}</p>
-        </div>
+        {lacuna.initiativesTitle && (
+          <div className="lacuna-initiatives">
+            <h3>{lacuna.initiativesTitle}</h3>
+            <p>{lacuna.initiativesText}</p>
+          </div>
+        )}
 
-        <div className="lacuna-closing">
-          <h3>{lacuna.susTitle}</h3>
-          <p>{lacuna.susText}</p>
-        </div>
+        {lacuna.susTitle && (
+          <div className="lacuna-closing">
+            <h3>{lacuna.susTitle}</h3>
+            <p>{lacuna.susText}</p>
+          </div>
+        )}
       </div>
     </section>
   )
