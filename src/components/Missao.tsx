@@ -1,38 +1,41 @@
 export default function Missao({ dict }: { dict: Record<string, any> }) {
   const { missao } = dict
-
-  /* Support both array format and legacy individual keys */
-  const cards: { icon: string; title: string; text: string }[] =
-    missao.cards ?? [
-      { icon: missao.card1Icon, title: missao.card1Title, text: missao.card1Text },
-      { icon: missao.card2Icon, title: missao.card2Title, text: missao.card2Text },
-      { icon: missao.card3Icon, title: missao.card3Title, text: missao.card3Text },
-      { icon: missao.card4Icon, title: missao.card4Title, text: missao.card4Text },
-      { icon: missao.card5Icon, title: missao.card5Title, text: missao.card5Text },
-      { icon: missao.card6Icon, title: missao.card6Title, text: missao.card6Text },
-    ].filter((c) => c.title)
+  const cards: { icon: string; title: string; text: string }[] = missao.cards ?? []
 
   return (
-    <section className="missao" id="missao" aria-labelledby="missao-title">
-      <div className="container">
-        <p className="section-eyebrow">{missao.eyebrow}</p>
-        <h2 id="missao-title" className="section-title">
-          {missao.titleNormal} <em>{missao.titleEm}</em>
+    <section id="missao" aria-label="Nossa missão">
+      <div className="missao-bg">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&auto=format&fit=crop&q=85"
+          alt=""
+          aria-hidden="true"
+          id="missao-img"
+        />
+      </div>
+      <div className="section-inner">
+        <p className="eyebrow">{missao.eyebrow}</p>
+        <h2 className="section-title">
+          {missao.titleNormal}
+          <br />
+          {missao.titleEm}
         </h2>
-        <p className="section-body">{missao.body}</p>
 
-        <blockquote className="missao-quote">
-          <p>{missao.quoteText}</p>
-          <cite>{missao.quoteCite}</cite>
-        </blockquote>
+        <div className="bible-verse-wrap">
+          <div className="verse-line" id="verse-line" />
+          <blockquote className="bible-verse" id="bible-verse">
+            <q>{missao.quoteText}</q>
+            <cite className="verse-ref">{missao.quoteCite}</cite>
+          </blockquote>
+        </div>
 
-        <div className="missao-cards-grid" role="list">
-          {cards.map((card, index) => (
-            <article className="missao-card" key={`missao-${index}`} role="listitem">
-              <div className="missao-card-icon" aria-hidden="true">{card.icon}</div>
+        <div className="pillars-grid">
+          {cards.map((card, i) => (
+            <div className="pillar-card" key={`pillar-${i}`}>
+              <span className="pillar-icon" aria-hidden="true">{card.icon}</span>
               <h3>{card.title}</h3>
               <p>{card.text}</p>
-            </article>
+            </div>
           ))}
         </div>
       </div>

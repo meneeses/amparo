@@ -1,35 +1,28 @@
 export default function Dados({ dict }: { dict: Record<string, any> }) {
   const { dados } = dict
-
-  const cards: { num: string; text: string }[] =
-    dados.cards ?? [
-      { num: dados.card1Num, text: dados.card1Text },
-      { num: dados.card2Num, text: dados.card2Text },
-      { num: dados.card3Num, text: dados.card3Text },
-      { num: dados.card4Num, text: dados.card4Text },
-      { num: dados.card5Num, text: dados.card5Text },
-      { num: dados.card6Num, text: dados.card6Text },
-    ].filter((c) => c.num)
+  const cards: { num: string; text: string }[] = dados.cards ?? []
 
   return (
-    <section className="dados" id="dados" aria-labelledby="dados-title">
-      <div className="container">
-        <p className="section-eyebrow">{dados.eyebrow}</p>
-        <h2 id="dados-title" className="section-title">
-          {dados.titleNormal} <em>{dados.titleEm}</em>
+    <section id="realidade" aria-label="A realidade brasileira">
+      <div className="section-inner">
+        <p className="eyebrow">{dados.eyebrow}</p>
+        <h2 className="section-title">
+          {dados.titleNormal}
+          <br />
+          {dados.titleEm}
         </h2>
-        <p className="section-body">{dados.body}</p>
+        <p className="lead-text">{dados.body}</p>
 
-        <div className="dados-grid" role="list" aria-label="Dados estatísticos">
-          {cards.map((card, index) => (
-            <article className="dados-card" key={`dados-${index}`} role="listitem">
-              <div className="dados-card-num" aria-hidden="true">{card.num}</div>
+        <div className="data-cards-grid">
+          {cards.map((card, i) => (
+            <div className="data-card" key={`dados-${i}`}>
+              <span className="stat-number">{card.num}</span>
               <p>{card.text}</p>
-            </article>
+            </div>
           ))}
         </div>
 
-        <p className="dados-source">{dados.source}</p>
+        <p className="sources-line">{dados.source}</p>
       </div>
     </section>
   )

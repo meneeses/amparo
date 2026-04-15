@@ -1,14 +1,7 @@
 'use client'
 
-import {
-  useState,
-  useCallback,
-  useRef,
-  type FormEvent,
-  type ChangeEvent,
-} from 'react'
+import { useState, useCallback, useRef, type FormEvent, type ChangeEvent } from 'react'
 
-/* ── Types ── */
 interface FormFields {
   nome: string
   email: string
@@ -20,26 +13,11 @@ interface FormFields {
 
 type FieldErrors = Partial<Record<keyof FormFields, string>>
 
-const INITIAL: FormFields = {
-  nome: '',
-  email: '',
-  whatsapp: '',
-  cidade: '',
-  tipo: '',
-  mensagem: '',
-}
+const INITIAL: FormFields = { nome: '', email: '', whatsapp: '', cidade: '', tipo: '', mensagem: '' }
 
-/* ── Formspree ── */
-// 👉 TROCAR pelo seu Form ID do https://formspree.io
-const FORMSPREE_URL = 'https://formspree.io/f/SEU_FORM_ID_AQUI'
+const EMAIL_RE = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 
-/* ── Validation ── */
-const EMAIL_RE =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-
-function sanitize(value: string): string {
-  return value.replace(/<[^>]*>/g, '').trim()
-}
+function sanitize(v: string): string { return v.replace(/<[^>]*>/g, '').trim() }
 
 function maskPhone(raw: string): string {
   const d = raw.replace(/\D/g, '').slice(0, 11)
@@ -54,7 +32,6 @@ const MAX: Record<keyof FormFields, number> = {
 
 const COOLDOWN = 5_000
 
-/* ── Component ── */
 export default function ContactForm({ dict }: { dict: Record<string, any> }) {
   const { form } = dict
   const [data, setData] = useState<FormFields>(INITIAL)
@@ -65,19 +42,14 @@ export default function ContactForm({ dict }: { dict: Record<string, any> }) {
   const lastSubmit = useRef(0)
   const [honey, setHoney] = useState('')
 
-  const updateField = useCallback(
+  const update = useCallback(
     (field: keyof FormFields) =>
       (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         let value = e.target.value
         if (field === 'whatsapp') value = maskPhone(value)
         if (value.length > MAX[field]) value = value.slice(0, MAX[field])
-        setData((prev) => ({ ...prev, [field]: value }))
-        setErrors((prev) => {
-          if (!prev[field]) return prev
-          const next = { ...prev }
-          delete next[field]
-          return next
-        })
+        setData((p) => ({ ...p, [field]: value }))
+        setErrors((p) => { if (!p[field]) return p; const n = { ...p }; delete n[field]; return n })
         setSubmitError(false)
       },
     []
@@ -85,9 +57,8 @@ export default function ContactForm({ dict }: { dict: Record<string, any> }) {
 
   const validate = (): boolean => {
     const e: FieldErrors = {}
-    const nome = sanitize(data.nome)
-    if (!nome) e.nome = 'Campo obrigatório'
-    else if (nome.length < 2) e.nome = 'Mínimo 2 caracteres'
+    if (!sanitize(data.nome)) e.nome = 'Campo obrigatório'
+    else if (sanitize(data.nome).length < 2) e.nome = 'Mínimo 2 caracteres'
     const email = sanitize(data.email).toLowerCase()
     if (!email) e.email = 'Campo obrigatório'
     else if (!EMAIL_RE.test(email)) e.email = 'E-mail inválido'
@@ -98,21 +69,15 @@ export default function ContactForm({ dict }: { dict: Record<string, any> }) {
 
   const handleSubmit = async (ev: FormEvent) => {
     ev.preventDefault()
-
-    /* Honeypot — bots preenchem este campo invisível */
     if (honey) return
-
-    /* Rate limit client-side */
     const now = Date.now()
     if (now - lastSubmit.current < COOLDOWN) return
     lastSubmit.current = now
-
     if (!validate()) return
 
     setSubmitting(true)
     setSubmitError(false)
 
-    /* Sanitizar todos os campos antes do envio */
     const payload = {
       nome: sanitize(data.nome),
       email: sanitize(data.email).toLowerCase(),
@@ -120,96 +85,77 @@ export default function ContactForm({ dict }: { dict: Record<string, any> }) {
       cidade: sanitize(data.cidade),
       como_ajudar: sanitize(data.tipo),
       mensagem: sanitize(data.mensagem),
-      /* Formspree usa _subject para o assunto do email */
       _subject: `Novo cadastro Amparo: ${sanitize(data.nome)}`,
     }
 
     try {
-      const res = await fetch(FORMSPREE_URL, {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(payload),
       })
-
-      if (res.ok) {
-        setSuccess(true)
-      } else {
-        setSubmitError(true)
-        setSubmitting(false)
-      }
-    } catch {
-      setSubmitError(true)
-      setSubmitting(false)
-    }
+      if (res.ok) setSuccess(true)
+      else { setSubmitError(true); setSubmitting(false) }
+    } catch { setSubmitError(true); setSubmitting(false) }
   }
 
-  /* ── Helper: campo input reutilizável ── */
-  const renderField = (
-    id: keyof FormFields,
-    label: string,
-    type: string,
-    placeholder: string,
-    opts: { required?: boolean; autoComplete?: string; full?: boolean; inputMode?: string } = {}
-  ) => (
-    <div className={`form-group${opts.full ? ' full' : ''}${errors[id] ? ' error' : ''}`}>
-      <label htmlFor={id}>{label}{opts.required ? ' *' : ''}</label>
-      <input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        value={data[id]}
-        onChange={updateField(id)}
-        maxLength={MAX[id]}
-        autoComplete={opts.autoComplete}
-        inputMode={opts.inputMode as any}
-        aria-required={opts.required || undefined}
-        aria-invalid={!!errors[id] || undefined}
-        aria-describedby={errors[id] ? `err-${id}` : undefined}
-      />
-      {errors[id] && (
-        <span id={`err-${id}`} className="form-error" role="alert">{errors[id]}</span>
-      )}
-    </div>
-  )
-
   return (
-    <section className="form-section" id="cadastro" aria-labelledby="form-title">
-      <div className="container" style={{ textAlign: 'center' }}>
-        <p className="section-eyebrow" style={{ justifyContent: 'center' }}>{form.eyebrow}</p>
-        <h2 id="form-title" className="section-title">{form.titleNormal} <em>{form.titleEm}</em></h2>
-        <p className="section-body" style={{ margin: '0 auto' }}>{form.body}</p>
+    <section id="cadastro" aria-label="Formulário de cadastro">
+      <div className="cadastro-bg-word" aria-hidden="true">AMPARO</div>
+      <div className="section-inner">
+        <p className="eyebrow">{form.eyebrow}</p>
+        <h2 className="section-title">
+          {form.titleNormal}
+          <br />
+          <span className="italic-lilac">{form.titleEm}</span>
+        </h2>
+        <p className="lead-text">{form.body}</p>
 
-        <div className="form-wrapper">
+        <div className="form-wrap">
           {success ? (
-            <div className="form-success" role="status" aria-live="polite">
-              <div className="form-success-icon" aria-hidden="true">🌿</div>
-              <h3>{form.successTitle}</h3>
-              <p>{form.successText}</p>
+            <div className="form-success" role="status" aria-live="polite" style={{ display: 'block' }}>
+              <div className="success-check" aria-hidden="true">✓</div>
+              <p className="success-title">{form.successTitle}</p>
+              <p className="success-text">{form.successText}</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} noValidate autoComplete="on">
-              {/* Honeypot anti-spam — invisível para humanos */}
+            <form id="amparo-form" onSubmit={handleSubmit} noValidate autoComplete="on">
+              {/* Honeypot */}
               <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }}>
                 <label htmlFor="website">Website</label>
                 <input id="website" name="_gotcha" type="text" tabIndex={-1} value={honey} onChange={(e) => setHoney(e.target.value)} autoComplete="off" />
               </div>
 
-              <div className="form-grid">
-                {renderField('nome', form.fieldName, 'text', form.placeName, { required: true, autoComplete: 'name' })}
-                {renderField('email', form.fieldEmail, 'email', form.placeEmail, { required: true, autoComplete: 'email' })}
-                {renderField('whatsapp', form.fieldWhatsapp, 'tel', form.placeWhatsapp, { autoComplete: 'tel', inputMode: 'numeric' })}
-                {renderField('cidade', form.fieldCity, 'text', form.placeCity, { autoComplete: 'address-level2' })}
+              <div className="form-row">
+                <div className={`form-group${errors.nome ? ' error' : ''}`}>
+                  <label htmlFor="f-nome">{form.fieldName} *</label>
+                  <input id="f-nome" type="text" placeholder={form.placeName} value={data.nome} onChange={update('nome')} maxLength={MAX.nome} required autoComplete="name" aria-required="true" aria-invalid={!!errors.nome} />
+                  {errors.nome && <span className="form-error" role="alert">{errors.nome}</span>}
+                </div>
+                <div className={`form-group${errors.email ? ' error' : ''}`}>
+                  <label htmlFor="f-email">{form.fieldEmail} *</label>
+                  <input id="f-email" type="email" placeholder={form.placeEmail} value={data.email} onChange={update('email')} maxLength={MAX.email} required autoComplete="email" aria-required="true" aria-invalid={!!errors.email} />
+                  {errors.email && <span className="form-error" role="alert">{errors.email}</span>}
+                </div>
+              </div>
 
-                <div className={`form-group full${errors.tipo ? ' error' : ''}`}>
-                  <label htmlFor="tipo">{form.fieldRole} *</label>
-                  <select
-                    id="tipo"
-                    value={data.tipo}
-                    onChange={updateField('tipo')}
-                    aria-required="true"
-                    aria-invalid={!!errors.tipo || undefined}
-                    aria-describedby={errors.tipo ? 'err-tipo' : undefined}
-                  >
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="f-whatsapp">{form.fieldWhatsapp}</label>
+                  <input id="f-whatsapp" type="tel" placeholder={form.placeWhatsapp} value={data.whatsapp} onChange={update('whatsapp')} maxLength={MAX.whatsapp} autoComplete="tel" inputMode="numeric" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="f-cidade">{form.fieldCity}</label>
+                  <input id="f-cidade" type="text" placeholder={form.placeCity} value={data.cidade} onChange={update('cidade')} maxLength={MAX.cidade} />
+                </div>
+              </div>
+
+              <div className="form-row full">
+                <div className={`form-group${errors.tipo ? ' error' : ''}`}>
+                  <label htmlFor="f-tipo">{form.fieldRole} *</label>
+                  <select id="f-tipo" value={data.tipo} onChange={update('tipo')} required aria-required="true" aria-invalid={!!errors.tipo}>
                     <option value="">{form.roleDefault}</option>
                     <option value="voluntario">{form.role1}</option>
                     <option value="investidor">{form.role2}</option>
@@ -217,29 +163,24 @@ export default function ContactForm({ dict }: { dict: Record<string, any> }) {
                     <option value="divulgar">{form.role4}</option>
                     <option value="outros">{form.role5}</option>
                   </select>
-                  {errors.tipo && <span id="err-tipo" className="form-error" role="alert">{errors.tipo}</span>}
+                  {errors.tipo && <span className="form-error" role="alert">{errors.tipo}</span>}
                 </div>
+              </div>
 
-                <div className="form-group full">
-                  <label htmlFor="mensagem">{form.fieldMessage}</label>
-                  <textarea
-                    id="mensagem"
-                    placeholder={form.placeMessage}
-                    value={data.mensagem}
-                    onChange={updateField('mensagem')}
-                    maxLength={MAX.mensagem}
-                    rows={4}
-                  />
+              <div className="form-row full">
+                <div className="form-group">
+                  <label htmlFor="f-mensagem">{form.fieldMessage}</label>
+                  <textarea id="f-mensagem" placeholder={form.placeMessage} value={data.mensagem} onChange={update('mensagem')} maxLength={MAX.mensagem} />
                 </div>
               </div>
 
               {submitError && (
-                <p className="form-error" role="alert" style={{ textAlign: 'center', marginTop: '0.75rem' }}>
-                  Erro ao enviar. Tente novamente em alguns instantes.
+                <p className="form-error" role="alert" style={{ textAlign: 'center', marginBottom: '8px' }}>
+                  Erro ao enviar. Tente novamente.
                 </p>
               )}
 
-              <button type="submit" className="form-submit" disabled={submitting} aria-busy={submitting}>
+              <button type="submit" className="btn-submit" disabled={submitting} aria-busy={submitting}>
                 {submitting ? 'Enviando...' : form.submitBtn}
               </button>
               <p className="form-note">{form.note}</p>
